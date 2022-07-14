@@ -1,0 +1,117 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$meBootstrapTemplate-primary: mat.define-palette(mat.$indigo-palette);
+$meBootstrapTemplate-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$meBootstrapTemplate-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$meBootstrapTemplate-theme: mat.define-light-theme((color: (primary: $meBootstrapTemplate-primary,
+        accent: $meBootstrapTemplate-accent,
+        warn: $meBootstrapTemplate-warn,
+      )));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($meBootstrapTemplate-theme);
+
+.mat-row:hover .mat-cell {
+  background-color: rgb(219, 236, 241) !important;
+}
+
+.mat-snack-bar-container {
+  padding: 8px 16px !important;
+}
+
+
+.green-snackbar {
+  background-color: rgb(76, 201, 18);
+  color: #ffff;
+}
+.red-snackbar {
+  background-color: rgb(218, 46, 23);
+  color: #ffff;
+}
+
+.yellow-snackbar {
+  background-color: rgb(217, 217, 36);
+  color: #ffff
+}
+
+.menu-fop .mat-menu-content:not(:empty) {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.menu-fop .mat-menu-item {
+  line-height: 36px !important;
+  height: 36px !important;
+}
+
+.menu-fop .mat-menu-item .mat-icon {
+  margin-right: 0px;
+}
+
+.menu-fop {
+  min-width: 80px !important;
+  min-height: 64px;
+}
+
+.navireDialog .mat-dialog-container {
+  padding: 0 !important;
+  margin: 0;
+  border-radius: 15px !important;
+}
+
+.mat-checkbox-checked .mat-checkbox-checkmark {
+  background-color: rgb(83, 186, 83) !important;
+}
+
+.mat-table {
+  border-radius: 10px;
+  overflow: hidden !important;
+}
+
+// .card-border{
+//   border: 3px solid rgb(242, 236, 236);
+//   box-shadow: 100px;
+//   border-radius: 24px;
+
+// }
+
+//add border to the filter 
+.mat-accordion>.mat-expansion-panel-spacing {
+  border: 1px solid rgba(80, 75, 75, 0.2) !important;
+
+}
+.mat-expansion-panel-body {
+  padding: 0 17px 1px !important;
+}
+.mat-expansion-panel-header {
+  padding: 11px 0px 24px 24px !important;
+}
+
+.mat-slide-toggle-thumb {
+  background-color: rgb(83 186 83) !important;
+}
+.mat-slide-toggle-bar {
+  background-color: rgb(114, 212, 114) !important;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

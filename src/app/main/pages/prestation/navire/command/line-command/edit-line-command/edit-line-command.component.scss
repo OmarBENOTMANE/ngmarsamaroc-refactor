@@ -1,0 +1,121 @@
+.mat-dialog-actions {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+table{
+    width: 100%;
+    //text-align: center;
+  }
+  th.mat-header-cell {
+    text-align: center;
+    background: #f4f4f4f5;
+    font-size: small;
+  }
+  
+  td {
+    text-align: center;
+  }
+  
+  table {
+    width: 100%;
+    background-color: #fff;
+  }
+  
+  .mat-icon1 {
+    padding-top: 2.5px;
+    font-size: 19px;
+  }
+  
+  .spacing{
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .btn-primary-2 {
+    position: absolute;
+    left: 0px;
+    //top: 52px;
+  }
+  
+  .centrer {
+    //padding-left: 8%;
+    height: 30vh;
+  }
+  
+  .mat-card {
+    width: 100%;
+    //padding-left: 10%;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+  }
+  
+  .button-div {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    width:80%
+  }
+  
+  .mat-form-field {
+    height: 70px;
+    width: 20%;
+  }
+  
+  .div-1{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 8%;
+  }
+  
+  .div-2{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .btn-clerfil{
+    width: 45%            
+  }
+  
+
+  
+
+  
+
+  
+  .mat-form-field{
+      font-size: 16px;
+      width: 280px;
+      &.mat-focused{
+          font-size: 20px;
+      }
+      .mat-input-element{
+          width: 100%;
+          font-size: 14px;
+      }
+      &::placeholder{
+          font-size: 14px;
+      }
+   }
+  
+  .mat-form-field-should-float {    
+    font-size: 20px;
+  }
+  .mat-expansion-panel-content > .mat-expansion-panel-body {
+      padding: 0 !important;
+    }
+  
+  .mat-expansion-panel-header {
+      
+      padding:24px 0px 24px 24px;
+     
+      
+  }
+  
+  
+
+
+  

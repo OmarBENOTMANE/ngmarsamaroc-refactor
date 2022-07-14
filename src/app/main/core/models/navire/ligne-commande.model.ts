@@ -1,0 +1,21 @@
+export interface LigneCommande{
+    id: number,
+    codeCpa: string,
+    numeroDossier: string,
+    numeroBonCommande: string,
+    numeroOrdrePrestation: number,
+    codePrestation: number,
+    libellePrestation: string,
+    dateDebut: number,
+    heureDebut: number,
+    dateFin: number,
+    heureFin: number,
+    poids: number,
+    quantite1: number,
+    quantite2: number,
+    importExport: string,
+    numeroDeclaration: string,
+    numeroCmd: string,
+    isDeleted: boolean,
+    isSelected: boolean
+  }

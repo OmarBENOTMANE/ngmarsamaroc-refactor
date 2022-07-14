@@ -1,0 +1,9 @@
+<div class="flex mt-1 ">
+    <mat-icon class="text-white mr-1" [svgIcon]="data.icon"></mat-icon> 
+    <div class="font-bold mr-4">{{data.message}}</div>
+    <div class="absolute right-1 mt-0.5">
+      <button  (click)="sbRef.dismiss()">
+        <mat-icon class="text-secondary " [svgIcon]="'heroicons_outline:x'"></mat-icon>
+      </button>
+    </div>
+</div>

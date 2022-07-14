@@ -1,0 +1,232 @@
+<div class="allpage">
+  <nav class="flex" aria-label="Breadcrumb">
+    <ol class="inline-flex items-center space-x-1 md:space-x-1" style="padding-left: 0px;">
+      <li class="inline-flex items-center">
+        <a routerLink="/dashboard"
+          class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-black">
+          <svg class="mr-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z">
+            </path>
+          </svg>
+          {{"breadcrumb.home" | translate}}
+        </a>
+      </li>
+      <li>
+        <div class="flex items-center">
+          <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+              clip-rule="evenodd"></path>
+          </svg>
+          <a routerLink="/navire/bp"
+            class="ml-1 text-sm font-medium text-gray-700 hover:text-gray-900 md:ml-2 dark:text-gray-400 dark:hover:text-black">
+            {{"breadcrumb.bulletins" | translate}}
+          </a>
+        </div>
+      </li>
+      <li>
+        <div class="flex items-center">
+          <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+              clip-rule="evenodd"></path>
+          </svg>
+          <a
+            class="ml-1 text-sm font-medium text-gray-700 hover:text-gray-900 md:ml-2 dark:text-gray-400 dark:hover:text-black">
+            Modifier
+          </a>
+        </div>
+      </li>
+    </ol>
+  </nav>
+  <div class="flex justify-between">
+    <h5>Modifier le bulletin de prestation</h5>
+    <ng-container *ngIf="cmd.status == 'VALIDATED'">
+      <div class="bg-green-500  text-white font-semibold hover:text-white py-0 px-3 border  rounded-full">
+        Statut : Validé
+      </div>
+    </ng-container>
+    <ng-container *ngIf="cmd.status == 'SAVED'">
+      <div class="bg-orange-500  text-white font-semibold hover:text-white py-0 px-3 border  rounded-full">
+        Statut : Enregistré
+      </div>
+    </ng-container>
+    <ng-container *ngIf="cmd.status == 'CANCELED'">
+      <div class="bg-red-500  text-white font-semibold hover:text-white py-0 px-3 border  rounded-full">
+        Statut : Annulé
+      </div>
+    </ng-container>
+    <ng-container *ngIf="cmd.status == 'SENT'">
+      <div class="bg-blue-500  text-white font-semibold hover:text-white py-0 px-3 border  rounded-full">
+        Statut: Envoyé
+      </div>
+    </ng-container>
+    <ng-container *ngIf="cmd.status == 'PREVALIDATED'">
+      <div class="bg-yellow-500  text-white font-semibold hover:text-white py-0 px-3 border  rounded-full">
+        Statut: Prévalidé
+      </div>
+    </ng-container>
+  </div>
+  <hr>
+  <div class="mb-4 card-border">
+    <mat-accordion>
+      <mat-expansion-panel hideToggle (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+        [expanded]="panelOpenState">
+        <form *ngIf="cmdForm"
+          class="flex flex-column items-start w-full  mt-4 pb-2 pt-2 pr-8 pl-2  rounded-2xl  bg-card"
+          [formGroup]="cmdForm">
+          <div class="flex flex-row w-full mb-3">
+            <mat-form-field class="w-full mr-10">
+              <mat-label>Numéro BP</mat-label>
+              <input [autocomplete]="'off'" formControlName="numerBP" readonly matInput>
+            </mat-form-field>
+            <mat-form-field class="w-full mr-10">
+              <mat-label>Code CPA </mat-label>
+              <input [autocomplete]="'off'" formControlName="codeCpa" readonly matInput>
+            </mat-form-field>
+            <mat-form-field class="w-full mr-10">
+              <mat-label>Code client</mat-label>
+              <input [autocomplete]="'off'" formControlName="codeClient" readonly matInput>
+            </mat-form-field>
+            <mat-form-field class="w-full mr-10">
+              <mat-label>Nom client</mat-label>
+              <input [autocomplete]="'off'" formControlName="nomClient" readonly matInput>
+            </mat-form-field>
+          </div>
+          <div class="flex flex-row w-full mb-3 ">
+            
+            <mat-form-field class="w-full mr-10">
+              <mat-label> Numéro Escale</mat-label>
+              <input [autocomplete]="'off'" formControlName="numeroEscale" readonly matInput>
+            </mat-form-field>
+            <mat-form-field class="w-full mr-10">
+              <mat-label> Code nature prestation</mat-label>
+              <input [autocomplete]="'off'" formControlName="codeNaturePrestation" readonly matInput>
+            </mat-form-field>
+              <mat-form-field class="w-full mr-10">
+                <mat-label> Longueur de navire</mat-label>
+                <input [autocomplete]="'off'" readonly formControlName="shipLength" matInput>
+              </mat-form-field>
+            
+          </div>
+          <div class="flex flex-row w-full mb-3 mt-4 ">
+            <mat-slide-toggle *ngIf="!currentFileName[0]" [(ngModel)]="isChecked" [ngModelOptions]="{standalone: true}"></mat-slide-toggle>
+            Exonération TVA   
+          </div>
+          <div class="flex flex-row w-full mb-3 mt-0 ">
+            <ng-container *ngIf="isChecked ">
+              <input formControlName="file" id="file" type="file" multiple class="form-control"
+                (change)="selectFile($event)" accept="zip,application/pdf,application/zip" class="hidden">
+              <!-- <label for ="file">Saisir le fichier</label>  -->
+              <label *ngIf="cmd['status'] == 'SAVED'" for ="file" class="mr-1 bg-blue-500 hover:bg-blue-500 text-white font-semibold  py-2 px-3 border border-blue-500 hover:border-transparent rounded inline-flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" class=" w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                </svg>
+                <span>Choisir un fichier</span> 
+              </label> 
+              <button *ngIf="currentFileName[0]" (click)="download()" class="mr-1 bg-blue-500 hover:bg-blue-500 text-white font-semibold  py-2 px-3 border border-blue-500 hover:border-transparent rounded inline-flex items-center">
+                <span>{{currentFileName[0]}}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="fill-current w-4 h-4 ml-2"  viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg> 
+              </button> 
+              <button *ngIf="currentFileName[0] && cmd['status'] == 'SAVED' " (click)="deleteFile()"  >
+                <mat-icon class="text-secondary" [svgIcon]="'heroicons_outline:trash'"></mat-icon>
+              </button>
+              <!-- <button class="ml-1" >
+                <mat-icon (click)="download()" class="" [svgIcon]="'heroicons_outline:download'"></mat-icon>
+              </button> -->
+              <!-- <button (click)="download()" class="bg-gray-300 text-gray-800 font-bold py-2 px-2 rounded inline-flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="fill-current w-4 h-4 mr-2"  viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
+                <span>Télécharger le fichier</span>
+              </button> -->
+              <!-- <div *ngIf="currentFileName" >Fichier téléchargé: {{currentFileName}}</div> -->
+              
+            </ng-container>
+          </div>
+          <div class="flex items-center justify-end w-full pt-3 mt-3 ">
+            <button class="bg-[#b02e2c] hover:bg-[#db614b] text-white leading-6 text-base border border-gray-300 font-['Helvetica Neue'] focus:outline-none mr-1 py-1 px-3 rounded  font-medium text-sm flex"
+              (click)="precancelBp()">
+              <div>Annuler BP</div>
+            </button>
+            <!-- <button *ngIf="cmd && cmd['status']=='PREVALIDATED' && hasPermission('ApprobationValidation')" class="bg-[#b7b32a] hover:bg-[#bbb72a] text-white leading-6 text-base border border-gray-300 font-['Helvetica Neue'] focus:outline-none mr-1 py-1 px-3 rounded  font-medium text-sm flex"
+              (click)="unprevalidate()">
+              <div>Rejeter</div>
+            </button> -->
+            <button *ngIf="cmd && cmd['status']=='VALIDATED' && (hasPermission('Validation'))" class="bg-[#b7b32a] hover:bg-[#bbb72a] text-white leading-6 text-base border border-gray-300 font-['Helvetica Neue'] focus:outline-none mr-1 py-1 px-3 rounded  font-medium text-sm flex"
+              (click)="unvalidateBp()">
+              <div>Annuler la validation</div>
+            </button>
+            <!-- <button *ngIf="cmd && cmd['status']=='VALIDATED' && hasPermission('ApprobationValidation')" class="bg-[#b7b32a] hover:bg-[#bbb72a] text-white leading-6 text-base border border-gray-300 font-['Helvetica Neue'] focus:outline-none mr-1 py-1 px-3 rounded  font-medium text-sm flex"
+              (click)="unvalidateBp()">
+              <div>Annuler la validation</div>
+            </button> -->
+            <button *ngIf="cmd && cmd['status'] == 'SAVED'  && hasPermission('Validation')" class="bg-[#1F9CDB] hover:bg-[#0ea5e9]  text-white leading-6 text-base border border-gray-300 font-['Helvetica Neue'] focus:outline-none mr-1 py-1 px-3 rounded  font-medium text-sm flex"
+              (click)="validateBp()">
+              <div>Valider</div>
+            </button>
+            <!-- <button *ngIf="cmd && cmd['status']== 'PREVALIDATED' && hasPermission('ApprobationValidation')" class="bg-[#1F9CDB] hover:bg-[#0ea5e9]  text-white leading-6 text-base border border-gray-300 font-['Helvetica Neue'] focus:outline-none mr-1 py-1 px-3 rounded  font-medium text-sm flex"
+              (click)="validateBp()">
+              <div>Approuver la validation</div>
+            </button> -->
+            <button *ngIf="cmd && cmd['status']=='VALIDATED' && hasPermission('Sending')" class="bg-[#1F9CDB] hover:bg-[#0ea5e9]  text-white leading-6 text-base border border-gray-300 font-['Helvetica Neue'] focus:outline-none mr-1 py-1 px-3 rounded  font-medium text-sm flex"
+              (click)="sendBp()">
+              <div>À facturer</div>
+            </button>
+          </div>
+        </form>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  <div class=" bg-card shadow rounded-2xl ">
+    <table class="bg-card rounded-xl" mat-table [dataSource]="cmdLine1">
+      <ng-container matColumnDef="lib">
+        <th mat-header-cell *matHeaderCellDef>Prestation</th>
+        <td mat-cell *matCellDef="let element">{{element.libellePrestation}} </td>
+      </ng-container>
+      <ng-container matColumnDef="codeCpa">
+        <th mat-header-cell *matHeaderCellDef>Code CPA</th>
+        <td mat-cell *matCellDef="let element">{{element.codeCpa}} </td>
+      </ng-container>
+      <ng-container matColumnDef="numeroBonCommande">
+        <th mat-header-cell *matHeaderCellDef>Numéro bon de commande</th>
+        <td mat-cell *matCellDef="let element">{{element.numeroBonCommande}} </td>
+      </ng-container>
+      <ng-container matColumnDef="nop">
+        <th mat-header-cell *matHeaderCellDef>Numéro OP</th>
+        <td mat-cell *matCellDef="let element">{{element.numeroOrdrePrestation}} </td>
+      </ng-container>
+      <ng-container matColumnDef="codeP">
+        <th mat-header-cell *matHeaderCellDef>Code prestation</th>
+        <td mat-cell *matCellDef="let element">{{element.codePrestation}} </td>
+      </ng-container>
+      <ng-container matColumnDef="dateD">
+        <th mat-header-cell *matHeaderCellDef>Date début</th>
+        <td mat-cell *matCellDef="let element">{{element.dateDebut}} </td>
+      </ng-container>
+      <ng-container matColumnDef="heureD">
+        <th mat-header-cell *matHeaderCellDef>Heure début</th>
+        <td mat-cell *matCellDef="let element">{{element.heureDebut}} </td>
+      </ng-container>
+      <ng-container matColumnDef="dateF">
+        <th mat-header-cell *matHeaderCellDef>Date fin</th>
+        <td mat-cell *matCellDef="let element">{{element.dateFin}} </td>
+      </ng-container>
+      <ng-container matColumnDef="heureF">
+        <th mat-header-cell *matHeaderCellDef>Heure fin</th>
+        <td mat-cell *matCellDef="let element">{{element.heureFin}} </td>
+      </ng-container>
+      <ng-container matColumnDef="selected">
+        <th mat-header-cell *matHeaderCellDef>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        <td mat-cell *matCellDef="let element">
+          <div>
+            <section class="example-section">
+              <mat-checkbox [checked]="element.isSelected" [disabled]="true" class="example-margin"></mat-checkbox>
+            </section>
+          </div>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>

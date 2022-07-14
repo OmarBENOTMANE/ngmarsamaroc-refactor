@@ -1,0 +1,48 @@
+<!-- Button -->
+<button
+    mat-icon-button
+    [matMenuTriggerFor]="languages">
+    <ng-container *ngTemplateOutlet="flagImage2; context: {$implicit: activeLang}"></ng-container>
+</button>
+
+<!-- Language menu -->
+<mat-menu
+    [xPosition]="'before'"
+    #languages="matMenu">
+    <ng-container *ngFor="let lang of availableLangs">
+        <button
+            mat-menu-item
+            >
+            <span class="flex items-center">
+                <ng-container *ngTemplateOutlet="flagImage; context: {$implicit: lang.id}"></ng-container>
+                <span class="ml-3">{{lang.label}}</span>
+            </span>
+        </button>
+    </ng-container>
+</mat-menu>
+
+<!-- Flag image default template -->
+<ng-template
+    let-lang
+    #flagImage2>
+    <span class="relative w-6 shadow rounded-sm overflow-hidden ">
+        <span class="absolute inset-0 "></span>
+        <img
+            class="w-6 ml-2"
+            [src]="'../../../../../assets/image/flags/' + flagCodes[lang].toUpperCase() + '.svg'"
+            [alt]="'Flag image for ' + lang">
+    </span>
+</ng-template>
+
+<!-- Flag image template -->
+<ng-template
+    let-lang
+    #flagImage>
+    <span class="relative w-6 shadow rounded-sm overflow-hidden ">
+        <span class="absolute inset-0 "></span>
+        <img
+            class="w-6"
+            [src]="'../../../../../assets/image/flags/' + flagCodes[lang].toUpperCase() + '.svg'"
+            [alt]="'Flag image for ' + lang">
+    </span>
+</ng-template>

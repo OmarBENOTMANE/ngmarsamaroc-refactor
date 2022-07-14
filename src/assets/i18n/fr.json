@@ -1,0 +1,57 @@
+{
+    "dashbord" : "Tableau de bord",
+    "Prestation" : "Prestation",
+    "Modif-Bp" : "Modifier Bulletin Prestation",
+    "Bp-manag": "Bulletin prestation",
+    "cmd-manag" : "Commande",
+    "nav-hist" : "Navire",
+
+    "table":{
+        "filter":"Filter",
+        "edit": "Modifier",
+        "validate":"Valider ",
+        "invoice":"Facturer"
+
+    },
+    "breadcrumb":{
+        "home": "Acceuil",
+        "bulletins": "Bulletins",
+        "navires":"Navires",
+        "ajouter":"ajouter",
+        "modifier":"modifier"
+    },
+
+    "titles":{
+        "bp":"Bulletin de prestation"
+    },
+    "form-buttons":{
+        "reset":"Reset",
+        "search":"Recherche"
+    },
+
+    "bp":{
+        "id":"Id Bp",
+        "press-dossier-num":"N dossier presta",
+        "numerocmd": "Numero cmd",
+        "client":"Client",
+        "client-type":"Type client",
+        "nature-code": "Code nature",
+        "deposit-date":"Date depot",
+        "exec-date":"Date exec",
+        "status":"Statut",
+        "action":"Actions"
+    },
+    "form-bp":{
+        "numBP":"Num de BP",
+        "statut":"Statut",
+        "date_depot":"Date dépot",
+        "nom_client":"Nom client",
+        "validation":"Validation",
+        "date_exec":"Date execution"
+    },
+    "buttons":{
+        "add":"Ajouter"
+    }
+    
+    
+}

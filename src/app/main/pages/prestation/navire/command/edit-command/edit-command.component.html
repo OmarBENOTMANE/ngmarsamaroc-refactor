@@ -1,0 +1,167 @@
+<div class="allpage">
+  <nav class="flex" aria-label="Breadcrumb">
+    <ol class="inline-flex items-center space-x-1 md:space-x-1" style="padding-left: 0px;">
+      <li class="inline-flex items-center">
+        <a routerLink="/dashboard"
+          class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-black">
+          <svg class="mr-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z">
+            </path>
+          </svg>
+          Acceuil
+        </a>
+      </li>
+      <li>
+        <div class="flex items-center">
+          <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+              clip-rule="evenodd"></path>
+          </svg>
+          <a routerLink="/navire/cmd"
+            class="ml-1 text-sm font-medium text-gray-700 hover:text-gray-900 md:ml-2 dark:text-gray-400 dark:hover:text-black">
+            Commandes
+          </a>
+        </div>
+      </li>
+      <li>
+        <div class="flex items-center">
+          <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+              clip-rule="evenodd"></path>
+          </svg>
+          <a
+            class="ml-1 text-sm font-medium text-gray-700 hover:text-gray-900 md:ml-2 dark:text-gray-400 dark:hover:text-black">
+            Modifier
+          </a>
+        </div>
+      </li>
+    </ol>
+  </nav>
+  <h5 *ngIf="cmdId; else elseBlock">Modifier la commande</h5>
+  <ng-template #elseBlock>
+    <h5>Ajouter une commande</h5>
+  </ng-template>
+  <hr>
+  <div class="mb-4 card-border">
+    <mat-accordion>
+      <mat-expansion-panel hideToggle (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+        [expanded]="panelOpenState">
+        <form *ngIf="cmdForm"
+          class="flex flex-column items-start w-full  mt-4 pb-2 pt-2 pr-8 pl-2  rounded-2xl  bg-card"
+          [formGroup]="cmdForm">
+          <div class="flex flex-row w-full mb-3">
+            <mat-form-field class="w-full mr-10">
+              <mat-label> Nº bon de commande</mat-label>
+              <input readonly [autocomplete]="'off'" formControlName="numeroCmd" matInput>
+            </mat-form-field>
+            <mat-form-field class="w-full mr-10">
+              <mat-label> Nº escale</mat-label>
+              <input [autocomplete]="'off'" formControlName="numeroEscale" matInput>
+            </mat-form-field>
+            <mat-form-field class="w-full mr-10">
+              <mat-label>Code CPA </mat-label>
+              <input readonly [autocomplete]="'off'" formControlName="codeCpa" matInput>
+            </mat-form-field>
+          </div>
+          <div class="flex flex-row w-full mb-3">
+            <mat-form-field class="w-full mr-10">
+              <mat-label> Code nature prestation</mat-label>
+              <input readonly [autocomplete]="'off'" formControlName="codeNaturePrestation" matInput>
+            </mat-form-field>
+            <mat-form-field class="w-full mr-2">
+              <mat-label>Code client</mat-label>
+              <input [autocomplete]="'off'" formControlName="codeClient" matInput>
+            </mat-form-field>
+            <button class="mt-4">
+              <mat-icon class="text-secondary" (click)="getClientName()" [svgIcon]="'heroicons_outline:arrow-circle-right'"></mat-icon>
+              </button>
+            <mat-form-field class="w-full ml-3 mr-7">
+              <mat-label>Nom client</mat-label>
+              <input [autocomplete]="'off'" formControlName="nomClient" matInput>
+            </mat-form-field>
+          </div>
+          <div class="flex flex-row w-full mb-3">
+            <mat-form-field class="w-full mr-10">
+              <mat-label> Longueur de navire</mat-label>
+              <input [autocomplete]="'off'" formControlName="shipLength" matInput>
+            </mat-form-field>
+          </div>
+          <div class="flex items-center justify-end w-full pt-3 mt-3">
+            <button [disabled]="compareValues()" [ngClass]="compareValues() ? 'blocked-cursor':''" class="bg-[#928f8f] hover:bg-[#928f8f] text-white leading-6 text-base border border-gray-300 font-['Helvetica Neue'] focus:outline-none mr-1 py-1 px-3 rounded  font-medium text-sm flex"
+              (click)="createForm()">
+              <div>Annuler</div>
+            </button>
+            <button [disabled]="compareValues() || cmdForm.invalid" [ngClass]="(compareValues() || cmdForm.invalid) ? 'blocked-cursor':''" class="bg-[#1F9CDB] hover:bg-[#0ea5e9]  text-white leading-6 text-base border border-gray-300 font-['Helvetica Neue'] focus:outline-none mr-1 py-1 px-3 rounded  font-medium text-sm flex"
+              (click)="updateCmd()">
+              <div>Enregistrer</div>
+            </button>
+            <button [disabled]="cmdForm.invalid" [ngClass]="cmdForm.invalid ? 'blocked-cursor':''" class="bg-[#1c9220]   text-white leading-6 text-base border border-gray-300 font-['Helvetica Neue'] focus:outline-none mr-1 py-1 px-3 rounded  font-medium text-sm flex"
+              (click)="generateBp()">
+              <div> Générer un BP</div>
+            </button>
+          </div>
+        </form>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  <div class=" mb-4 mr-4 flex justify-end">
+    <button (click)="openDialog()" type="button" class="bg-[#1F9CDB] hover:bg-[#0ea5e9]  text-white leading-6 text-base border border-gray-300 font-['Helvetica Neue'] focus:outline-none mr-1 py-1 px-2 rounded  font-medium text-sm flex">
+      <mat-icon class="text-[19px] mt-1 -ml-1">add_circle_outline</mat-icon>
+      <div>Ajouter</div>
+    </button>
+  </div>
+  <div class=" bg-card shadow rounded-2xl ">
+    <table class="bg-card rounded-xl" mat-table [dataSource]="cmdLine1">
+      <ng-container matColumnDef="codeP">
+        <th mat-header-cell *matHeaderCellDef>Code mouvement</th>
+        <td mat-cell *matCellDef="let element">{{element.codePrestation}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Libelle">
+        <th mat-header-cell *matHeaderCellDef>Libellé</th>
+        <td mat-cell *matCellDef="let element">{{element.libellePrestation}} </td>
+      </ng-container>
+      <ng-container matColumnDef="nop">
+        <th mat-header-cell *matHeaderCellDef>Numéro OP</th>
+        <td mat-cell *matCellDef="let element">{{element.numeroOrdrePrestation}} </td>
+      </ng-container>
+      <ng-container matColumnDef="dateD">
+        <th mat-header-cell *matHeaderCellDef>Date début</th>
+        <td mat-cell *matCellDef="let element">{{element.dateDebut}} </td>
+      </ng-container>
+      <ng-container matColumnDef="heureD">
+        <th mat-header-cell *matHeaderCellDef>Heure début</th>
+        <td mat-cell *matCellDef="let element">{{element.heureDebut}} </td>
+      </ng-container>
+      <ng-container matColumnDef="dateF">
+        <th mat-header-cell *matHeaderCellDef>Date fin</th>
+        <td mat-cell *matCellDef="let element">{{element.dateFin}} </td>
+      </ng-container>
+      <ng-container matColumnDef="heureF">
+        <th mat-header-cell *matHeaderCellDef>Heure fin</th>
+        <td mat-cell *matCellDef="let element">{{element.heureFin}} </td>
+      </ng-container>
+      <ng-container matColumnDef="selected">
+        <th mat-header-cell *matHeaderCellDef>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        <td mat-cell *matCellDef="let element">
+          <ng-container *ngIf="element.isGenerated == null; else otherng">
+            <section class="example-section">
+              <mat-checkbox [checked]="element.isSelected" (click)="$event.stopPropagation()"
+                (change)="checkElement( element)" class="example-margin"></mat-checkbox>
+            </section>
+          </ng-container>
+          <ng-template #otherng>
+            <button class="text-red-600 " (click)="$event.stopPropagation(); deleteline(element.id)">
+              <mat-icon [svgIcon]="'heroicons_outline:trash'"></mat-icon>
+            </button>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row (click)="openDialog2(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>

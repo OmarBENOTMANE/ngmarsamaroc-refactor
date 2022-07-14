@@ -1,0 +1,106 @@
+<nav class="flex" aria-label="Breadcrumb">
+  <ol class="inline-flex items-center space-x-1 md:space-x-1" style="padding-left: 0px;">
+    <li class="inline-flex items-center">
+      <a routerLink="/dashboard"
+        class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-black">
+        <svg class="mr-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z">
+          </path>
+        </svg>
+        {{"breadcrumb.home" | translate}}
+      </a>
+    </li>
+    <li>
+      <div class="flex items-center">
+        <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+            clip-rule="evenodd"></path>
+        </svg>
+        <a routerLink="/navire/bp"
+          class="ml-1 text-sm font-medium text-gray-700 hover:text-gray-900 md:ml-2 dark:text-gray-400 dark:hover:text-black">
+          {{"breadcrumb.navires" | translate}}
+        </a>
+      </div>
+    </li>
+  </ol>
+</nav>
+<div class="mb-4">
+  <mat-accordion>
+    <mat-expansion-panel hideToggle (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+      [expanded]="panelOpenState">
+      <mat-expansion-panel-header class="bg-gray-100">
+        <mat-panel-title class="font-medium">
+          <div class="text-[18px] text-[#928f8f] font-medium">Filtres</div>
+        </mat-panel-title>
+        <mat-panel-description class="flex justify-end  font-medium text-red-600">
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <form class="flex flex-column items-start w-full   mt-0 pb-2 pt-2 pr-8 pl-2  rounded-2xl  bg-card"
+        [formGroup]="navireFilter">
+        <div class="flex flex-row w-full">
+          <mat-form-field class="w-full mr-10">
+            <mat-label>Numéro escale</mat-label>
+            <input formControlName="numeroEscale" [autocomplete]="'off'" matInput>
+          </mat-form-field>
+          <mat-form-field class="w-full mr-10">
+            <mat-label>Nom du navire</mat-label>
+            <input formControlName="nomNavire" [autocomplete]="'off'" matInput>
+          </mat-form-field>
+          <mat-form-field class="w-full mr-10">
+            <mat-label>Nº Lloyd</mat-label>
+            <input formControlName="numeroLloyd" [autocomplete]="'off'" matInput>
+          </mat-form-field>
+        </div>
+        <div class="flex items-center justify-end w-full pt-3 mt-3  mb-2 mr-4 ">
+          <button class="bg-[#928f8f] hover:bg-[#a09e9e] text-white leading-6 text-base border border-gray-300 font-['Helvetica Neue'] focus:outline-none mr-1 py-0.5 px-3 rounded  font-medium  text-sm flex"
+            (click)="resetForm()">
+            <div>Annuler</div>
+          </button>
+          <button class="bg-[#1F9CDB] hover:bg-[#0ea5e9] text-white leading-6 text-base border border-gray-300 font-['Helvetica Neue'] focus:outline-none py-0.5 px-3 rounded  font-medium text-sm flex"
+            (click)="filterNavires()">
+            <div>Recherche</div>
+          </button>
+        </div>
+      </form>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+<div class=" bg-card shadow rounded-2xl ">
+  <table class="bg-card rounded-xl" [dataSource]="data" mat-table>
+    <ng-container matColumnDef="numeroEscale">
+      <th mat-header-cell *matHeaderCellDef>Numéro escale</th>
+      <td mat-cell *matCellDef="let element"> {{element.numeroEscale}} </td>
+    </ng-container>
+    <ng-container matColumnDef="nomNavire">
+      <th mat-header-cell *matHeaderCellDef>Nom navire</th>
+      <td mat-cell *matCellDef="let element"> {{element.nomNavire}} </td>
+    </ng-container>
+    <ng-container matColumnDef='numeroLloyd'>
+      <th mat-header-cell *matHeaderCellDef>Numéro Lloyd</th>
+      <td mat-cell *matCellDef="let element"> {{element.numeroLloyd}}
+      <td>
+    </ng-container>
+    <ng-container matColumnDef="dateArriveeEstimative">
+      <th mat-header-cell *matHeaderCellDef>Date arrivée</th>
+      <td mat-cell *matCellDef="let element"> {{element.dateArriveeEstimative}} </td>
+    </ng-container>
+    <ng-container matColumnDef='typeNavire'>
+      <th mat-header-cell *matHeaderCellDef>Type navire</th>
+      <td mat-cell *matCellDef="let element"> {{element.typeNavire}}
+      <td>
+    </ng-container>
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" [attr.colspan]="displayedColumns.length">
+        Aucune correspondance
+      </td>
+    </tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row (click)="onclick(row.nomNavire, row.numeroEscale)" *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" [pageSize]="pageSize" [pageIndex]="pageIndex"
+    (page)="onPageChange($event)" [length]="dataLength" aria-label="Select page size" class="pagination">
+  </mat-paginator>
+</div>

@@ -1,0 +1,23 @@
+export interface Commande{
+    id: number,
+    numeroBulletinPrestation: string,
+    codeCpa: string,
+    codeOperation: string,
+    codeClient: string,
+    nomClient: string,
+    numeroEscale: number,
+    codeOperation1: string,
+    codeOperation2: string,
+    codeOperation3: string,
+    codeNaturePrestation: string,
+    bulltinAnnule: string,
+    codeCauseAnnulation: string,
+    numeroFacture: string,
+    dateLimiteFacture: Date,
+    status: string,
+    numeroCmd: string,
+    isDeleted: boolean,
+    isGenerated: boolean,
+    isValidated: boolean,
+    isSent: boolean
+  }

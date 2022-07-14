@@ -1,0 +1,135 @@
+<div class="allpage">
+  <nav class="flex" aria-label="Breadcrumb">
+    <ol class="inline-flex items-center space-x-1 md:space-x-1" style="padding-left: 0px;">
+      <li class="inline-flex items-center">
+        <a routerLink="/dashboard"
+          class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-black">
+          <svg class="mr-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z">
+            </path>
+          </svg>
+          {{"breadcrumb.home" | translate}}
+        </a>
+      </li>
+      <li>
+        <div class="flex items-center">
+          <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+              clip-rule="evenodd"></path>
+          </svg>
+          <a routerLink="/navire/bp"
+            class="ml-1 text-sm font-medium text-gray-700 hover:text-gray-900 md:ml-2 dark:text-gray-400 dark:hover:text-black">
+            Historique commande
+          </a>
+        </div>
+      </li>
+      <li>
+        <div class="flex items-center">
+          <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+              clip-rule="evenodd"></path>
+          </svg>
+          <a
+            class="ml-1 text-sm font-medium text-gray-700 hover:text-gray-900 md:ml-2 dark:text-gray-400 dark:hover:text-black">
+            Afficher
+          </a>
+        </div>
+      </li>
+    </ol>
+  </nav>
+  <h5>Afficher une commande</h5>
+  <hr>
+  <div class="mb-4 card-border">
+    <mat-accordion>
+      <mat-expansion-panel hideToggle (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+        [expanded]="panelOpenState">
+        <form *ngIf="cmdForm"
+          class="flex flex-column items-start w-full  mt-4 pb-2 pt-2 pr-8 pl-2  rounded-2xl  bg-card"
+          [formGroup]="cmdForm">
+          <div class="flex flex-row w-full mb-3">
+            <mat-form-field class="w-full mr-10">
+              <mat-label> Nº bon de commande</mat-label>
+              <input readonly [autocomplete]="'off'" formControlName="numeroCmd" matInput>
+            </mat-form-field>
+            <mat-form-field class="w-full mr-10">
+              <mat-label> Nº escale</mat-label>
+              <input [autocomplete]="'off'" readonly formControlName="numeroEscale" matInput>
+            </mat-form-field>
+            <mat-form-field class="w-full mr-10">
+              <mat-label>Code CPA </mat-label>
+              <input [autocomplete]="'off'" readonly formControlName="codeCpa" matInput>
+            </mat-form-field>
+          </div>
+          <div class="flex flex-row w-full mb-8">
+            <mat-form-field class="w-full mr-10">
+              <mat-label> Code nature prestation</mat-label>
+              <input [autocomplete]="'off'" readonly formControlName="codeNaturePrestation" matInput>
+            </mat-form-field>
+            <mat-form-field class="w-full mr-10">
+              <mat-label>Code client</mat-label>
+              <input [autocomplete]="'off'" readonly formControlName="codeClient" matInput>
+            </mat-form-field>
+            <mat-form-field class="w-full mr-16">
+              <mat-label>Nom client</mat-label>
+              <input [autocomplete]="'off'" readonly formControlName="nomClient" matInput>
+            </mat-form-field>
+          </div>
+          <div class="flex flex-row w-full mb-3">
+            <mat-form-field class="w-full mr-10">
+              <mat-label> Longueur de navire</mat-label>
+              <input [autocomplete]="'off'" readonly formControlName="shipLength" matInput>
+            </mat-form-field>
+          </div>
+
+        </form>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  <div class=" bg-card shadow rounded-2xl ">
+    <table class="bg-card rounded-xl" mat-table [dataSource]="cmdLine1">
+      <ng-container matColumnDef="Libelle">
+        <th mat-header-cell *matHeaderCellDef>Libellé</th>
+        <td mat-cell *matCellDef="let element">{{element.libellePrestation}} </td>
+      </ng-container>
+      <ng-container matColumnDef="nop">
+        <th mat-header-cell *matHeaderCellDef>Numéro OP</th>
+        <td mat-cell *matCellDef="let element">{{element.numeroOrdrePrestation}} </td>
+      </ng-container>
+      <ng-container matColumnDef="codeP">
+        <th mat-header-cell *matHeaderCellDef>Code mouvement</th>
+        <td mat-cell *matCellDef="let element">{{element.codePrestation}} </td>
+      </ng-container>
+      <ng-container matColumnDef="dateD">
+        <th mat-header-cell *matHeaderCellDef>Date début</th>
+        <td mat-cell *matCellDef="let element">{{element.dateDebut}} </td>
+      </ng-container>
+      <ng-container matColumnDef="heureD">
+        <th mat-header-cell *matHeaderCellDef>Heure début</th>
+        <td mat-cell *matCellDef="let element">{{element.heureDebut}} </td>
+      </ng-container>
+      <ng-container matColumnDef="dateF">
+        <th mat-header-cell *matHeaderCellDef>Date fin</th>
+        <td mat-cell *matCellDef="let element">{{element.dateFin}} </td>
+      </ng-container>
+      <ng-container matColumnDef="heureF">
+        <th mat-header-cell *matHeaderCellDef>Heure fin</th>
+        <td mat-cell *matCellDef="let element">{{element.heureFin}} </td>
+      </ng-container>
+      <ng-container matColumnDef="selected">
+        <th mat-header-cell *matHeaderCellDef>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        <td mat-cell *matCellDef="let element">
+          <div>
+            <section class="example-section">
+              <mat-checkbox [checked]="element.isSelected" [disabled]="true" class="example-margin"></mat-checkbox>
+            </section>
+          </div>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>

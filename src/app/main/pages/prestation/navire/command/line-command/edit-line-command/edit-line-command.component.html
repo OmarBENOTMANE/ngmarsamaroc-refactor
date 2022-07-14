@@ -1,0 +1,97 @@
+<div class="dialog1 relative flex flex-col w-full h-full">
+  <ng-container>
+    <div class="text-xl leading-6 font-medium mb-4">Modifier une ligne</div>
+  </ng-container>
+  <div class="flex flex-col sm:flex-row flex-auto items-center sm:items-start p-2 pt-4 pb-6 sm:pb-8">
+    <ng-container>
+      <form *ngIf="lineForm" [formGroup]="lineForm"
+        class="flex flex-column items-start w-full  mt-0 pb-2 pt-2 pr-8 pl-2  rounded-2xl  bg-card">
+        <div class="flex flex-row w-full mb-3">
+          <mat-form-field class="w-full mr-10">
+            <mat-label>Code prestation</mat-label>
+            <input [autocomplete]="'off'" readonly matInput formControlName="codePrestation">
+            <!-- <mat-error *ngIf="this.lineForm.get('codePrestation')?.errors">
+              Veuillez entrer 6 caractères.
+            </mat-error> -->
+          </mat-form-field>
+          <mat-form-field class="w-full mr-10">
+            <mat-label>Libellé</mat-label>
+            <input [autocomplete]="'off'" readonly matInput formControlName="libellePrestation">
+          </mat-form-field>
+          <mat-form-field class="w-full mr-10">
+            <mat-label>Numéro OP</mat-label>
+            <input [autocomplete]="'off'" readonly matInput formControlName="numeroOrdrePrestation">
+          </mat-form-field>
+        </div>
+        <div class="flex flex-row w-full">
+          <mat-form-field class="w-full mr-8">
+            <mat-label>Date début</mat-label>
+            <input [autocomplete]="'off'" matInput formControlName="dateDebut">
+            <mat-error *ngIf="this.lineForm.get('dateDebut')?.errors?.['required']">
+              Veuillez entrer une valeur.
+            </mat-error>
+            <mat-error *ngIf="this.lineForm.get('dateDebut')?.errors?.['maxlength']">
+              Veuillez entrer 8 caractères.
+            </mat-error>
+            <mat-error *ngIf="this.lineForm.get('dateDebut')?.errors?.['pattern']">
+              Veuillez saisir un nombre.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="w-full mr-8">
+            <mat-label>Heure début</mat-label>
+            <input [autocomplete]="'off'"  matInput formControlName="heureDebut">
+            <mat-error *ngIf="this.lineForm.get('heureDebut')?.errors?.['required']">
+              Veuillez entrer une valeur.
+            </mat-error>
+            <mat-error *ngIf="this.lineForm.get('heureDebut')?.errors?.['maxlength']">
+              Veuillez entrer 4 caractères.
+            </mat-error>
+            <mat-error *ngIf="this.lineForm.get('heureDebut')?.errors?.['pattern']">
+              Veuillez saisir un nombre.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="w-full mr-8">
+            <mat-label>Date fin</mat-label>
+            <input [autocomplete]="'off'"  matInput formControlName="dateFin">
+            <mat-error *ngIf="this.lineForm.get('dateFin')?.errors?.['required']">
+              Veuillez entrer une valeur.
+            </mat-error>
+            <mat-error *ngIf="this.lineForm.get('dateFin')?.errors?.['maxlength']">
+              Veuillez entrer 8 caractères.
+            </mat-error>
+            <mat-error *ngIf="this.lineForm.get('dateFin')?.errors?.['pattern']">
+              Veuillez saisir un nombre.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="w-full mr-8">
+            <mat-label>Heure fin</mat-label>
+            <input [autocomplete]="'off'" matInput formControlName="heureFin">
+            <mat-error *ngIf="this.lineForm.get('heureFin')?.errors?.['required']">
+              Veuillez entrer une valeur.
+            </mat-error>
+            <mat-error *ngIf="this.lineForm.get('heureFin')?.errors?.['maxlength']">
+              Veuillez entrer 4 caractères.
+            </mat-error>
+            <mat-error *ngIf="this.lineForm.get('heureFin')?.errors?.['pattern']">
+              Veuillez saisir un nombre.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </form>
+    </ng-container>
+  </div>
+  <ng-container>
+    <div class="flex items-center justify-center sm:justify-end px-6 py-3 space-x-3 ">
+      <ng-container>
+        <button mat-stroked-button (click)="onClickno()">
+          Annuler
+        </button>
+      </ng-container>
+      <ng-container>
+        <button [disabled]="!lineForm.dirty || lineForm.invalid" [ngClass]="(!lineForm.dirty || lineForm.invalid) ? 'blocked-cursor':''" class="bg-[#2ad262] text-white" mat-flat-button (click)="onClickyes()">
+          Enregistrer
+        </button>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>

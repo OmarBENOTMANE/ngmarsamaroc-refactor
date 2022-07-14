@@ -1,0 +1,33 @@
+.mat-button-toggle-group {
+    border: none !important;
+    @apply space-x-1;
+
+    &.mat-button-toggle-group-appearance-standard {
+
+        .mat-button-toggle + .mat-button-toggle {
+            background-clip: padding-box;
+        }
+    }
+
+    .mat-button-toggle {
+        border-radius: 9999px;
+        overflow: hidden;
+        border: none !important;
+        font-weight: 400;
+        font-size: 0.85rem;
+
+        &.mat-button-toggle-checked {
+
+            
+        }
+
+        .mat-button-toggle-label-content {
+            padding: 0 20px;
+            
+        }
+
+        .mat-ripple {
+            border-radius: 9999px;
+        }
+    }
+}

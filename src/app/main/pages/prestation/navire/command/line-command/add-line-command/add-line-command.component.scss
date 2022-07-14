@@ -1,0 +1,228 @@
+.mat-dialog-actions {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+table{
+  width: 100%;
+  //text-align: center;
+}
+
+.mat-row:hover .mat-cell {
+  background-color: rgb(223, 220, 220);
+}
+th.mat-header-cell {
+  text-align: center;
+  background:  #1f9cdba1	;
+  font-size:1em;
+  font-weight: 540;
+  color: #000;
+  
+}
+.mat-header-row, .mat-row {
+  height: 40px;
+}
+
+
+th.mat-header{
+  padding: 100px;
+}
+th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type{
+  padding: 0;
+}
+th.mat-header-cell:last-of-type, td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type{
+  padding: 10px;  
+}
+
+
+td {
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  background-color: #fff;
+  padding: 0px;
+}
+
+.mat-icon1 {
+  padding-top: 2.5px;
+  font-size: 19px;
+}
+
+.spacing{
+  display: flex;
+  flex-direction: row;
+}
+
+
+.centrer {
+  //padding-left: 8%;
+  height: 30vh;
+}
+
+.mat-card {
+  width: 100%;
+  //padding-left: 10%;
+  background-color: #f8f9fa;
+  border-radius: 20px;
+}
+
+.button-div {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  width:80%
+}
+
+//for mat-form-fields
+.mat-form-field {
+  height: 60px;
+  width: 20%;
+}
+
+.div-1{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-left: 8%;
+}
+
+.div-2{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.btn-clerfil{
+  width: 45%            
+}
+
+.mat-button,
+.mat-fab,
+.mat-flat-button,
+.mat-icon-button,
+.mat-mini-fab,
+.mat-raised-button,
+.mat-stroked-button {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    min-height: 20px;
+    max-height: 40px;
+    line-height: 1 !important;
+
+    .mat-button-wrapper {
+        position: relative;
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        z-index: 2; /* Move mat-button-wrapper above the ripple and focus overlay */
+    }
+
+    .mat-button-focus-overlay,
+    .mat-button-ripple {
+        z-index: 1;
+    }
+
+    /* Large button */
+    &.mat-button-large {
+        height: 48px;
+        min-height: 48px;
+        max-height: 48px;
+    }
+
+    /* Lower the icon opacity on disabled buttons */
+    &.mat-button-disabled {
+
+        .mat-icon {
+            opacity: 0.38 !important;
+        }
+    }
+}
+
+.mat-fab {
+    max-height: 56px;
+}
+
+
+// for mat-form-field
+.mat-form-field{
+    font-size: 16px;
+    width: 280px;
+    &.mat-focused{
+        font-size: 20px;
+    }
+    .mat-input-element{
+        width: 100%;
+        font-size: 14px;
+    }
+    &::placeholder{
+        font-size: 14px;
+    }
+ }
+
+.mat-form-field-should-float {    
+  font-size: 20px;
+}
+.mat-expansion-panel-content > .mat-expansion-panel-body {
+    padding: 0 !important;
+  }
+
+.mat-expansion-panel-header {
+    
+    padding:24px 0px 24px 24px;
+   
+    
+}
+.mat-expanded{
+  background-color: #fff;
+}
+
+
+//reset button class
+.save-button {
+    background: grey;
+    margin-right: 5px;
+  }
+
+  .blue-icon {
+    color: blue;
+    font-size: 18px;
+}
+  .green-icon {
+    color: green;
+    font-size: 18px;
+  }
+  .violet-icon {
+      color: violet;
+  }
+
+  .mat-menu-content {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important; }
+  .mat-menu-item{
+    padding: 0 0px;
+  }
+  
+  .mat-menu-panel {
+    min-width: 80px !important;
+  
+  }
+  .mat-menu-content{
+    padding: 0;
+  }
+
+  .border-line{
+    border-top: .1px solid rgb(170, 169, 169);
+    padding: 0;
+    margin-top: 40px !important;
+  }
+  
+  // .mat-menu-item{
+  //   padding: 0;
+  // }
+  

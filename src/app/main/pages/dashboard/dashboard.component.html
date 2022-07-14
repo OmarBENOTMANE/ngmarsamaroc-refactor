@@ -1,0 +1,318 @@
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 w-full min-w-0 mt-1">
+    <!-- Total commandes -->
+    <div class="flex flex-col flex-auto pt-2 pl-3 pr-3 pb-1 bg-card shadow rounded-2xl overflow-hidden">
+        <div class="flex items-start justify-between">
+            <div class="text-base font-medium tracking-tight leading-6 truncate">Total commandes</div>
+            <div class="ml-2 -mt-2 -mr-3">
+                <button mat-icon-button [matMenuTriggerFor]="summaryMenu">
+                    <mat-icon class="icon-size-5">more_vert</mat-icon>
+                </button>
+                <mat-menu #summaryMenu="matMenu">
+                    <button mat-menu-item>Hier</button>
+                    <button mat-menu-item>2 jours avant</button>
+                    <button mat-menu-item>3 jours avant</button>
+                </mat-menu>
+            </div>
+        </div>
+        <div class="flex flex-col items-center mt-1">
+            <div class="text-7xl sm:text-5xl font-bold tracking-tight leading-none text-blue-500">10050</div>
+            <div class="text-base font-medium text-blue-600 dark:text-blue-500">commandes</div>
+            <!-- <div class="flex items-baseline justify-center w-full mt-5 text-secondary">
+                <div class="text-md font-medium truncate">Completed:</div>
+                <div class="ml-1.5 text-base font-semibold">13</div>
+            </div> -->
+        </div>
+    </div>
+    <!-- Nouveaux clients -->
+    <div class="flex flex-col flex-auto pt-2 pl-3 pr-3 pb-1 bg-card shadow rounded-2xl overflow-hidden">
+        <div class="flex items-start justify-between">
+            <div class="text-base font-medium tracking-tight leading-6 truncate">Navires facturés</div>
+            <div class="ml-2 -mt-2 -mr-3">
+                <button mat-icon-button [matMenuTriggerFor]="overdueMenu">
+                    <mat-icon class="icon-size-5" >more_vert</mat-icon>
+                </button>
+                <mat-menu #overdueMenu="matMenu">
+                    <button mat-menu-item>Hier</button>
+                    <button mat-menu-item>2 jours avant</button>
+                    <button mat-menu-item>3 jours avant</button>
+                </mat-menu>
+            </div>
+        </div>
+        <div class="flex flex-col items-center mt-1">
+            <div class="text-7xl sm:text-5xl font-bold tracking-tight leading-none text-red-500">17</div>
+            <div class="text-base font-medium text-red-600 dark:text-red-500">navire</div>
+            <!-- <div class="flex items-baseline justify-center w-full mt-5 text-secondary">
+                <div class="text-md font-medium truncate">From Hier:</div>
+                <div class="ml-1.5 text-base font-semibold">9</div>
+            </div> -->
+        </div>
+    </div>
+    <!-- bulletins de prestations -->
+    <div class="flex flex-col flex-auto pt-2 pl-3 pr-3 pb-1 bg-card shadow rounded-2xl overflow-hidden">
+        <div class="flex items-start justify-between">
+            <div class="text-base font-medium tracking-tight leading-6 truncate">Bulletins prestation</div>
+            <div class="ml-2 -mt-2 -mr-3">
+                <button mat-icon-button [matMenuTriggerFor]="issuesMenu">
+                    <mat-icon class="icon-size-5">more_vert</mat-icon>
+                </button>
+                <mat-menu #issuesMenu="matMenu">
+                    <button mat-menu-item>Hier</button>
+                    <button mat-menu-item>2 jours avant</button>
+                    <button mat-menu-item>3 jours avant</button>
+                </mat-menu>
+            </div>
+        </div>
+        <div class="flex flex-col items-center mt-1">
+            <div class="text-7xl sm:text-5xl font-bold tracking-tight leading-none text-amber-500">24</div>
+            <div class="text-base font-medium text-amber-600 dark:text-amber-500">bulletins</div>
+            <!-- <div class="flex items-baseline justify-center w-full mt-5 text-secondary">
+                <div class="text-md font-medium truncate">Closed today:</div>
+                <div class="ml-1.5 text-base font-semibold">19</div>
+            </div> -->
+        </div>
+    </div>
+    <!-- Nombre d'utilisateurs -->
+    <div  class="flex flex-col flex-auto pt-2 pl-3 pr-3 pb-1 bg-card shadow rounded-2xl overflow-hidden">
+        <div class="flex items-start justify-between">
+            <div class="text-base font-medium tracking-tight leading-6 truncate">Nombre d'utilisateurs</div>
+            <div class="ml-2 -mt-2 -mr-3">
+                <button mat-icon-button [matMenuTriggerFor]="featuresMenu">
+                    <mat-icon class="icon-size-5">more_vert</mat-icon>
+                </button>
+                <mat-menu #featuresMenu="matMenu">
+                    <button mat-menu-item>Hier</button>
+                    <button mat-menu-item>2 jours avant</button>
+                    <button mat-menu-item>3 jours avant</button>
+                </mat-menu>
+            </div>
+        </div>
+        <div class="flex flex-col items-center mt-1">
+            <div class="text-7xl sm:text-5xl font-bold tracking-tight leading-none text-green-500">38</div>
+            <div class="text-base font-medium text-green-600 dark:text-green-500">utilisateurs</div>
+            <!-- <div class="flex items-baseline justify-center w-full mt-5 text-secondary">
+                <div class="text-md font-medium truncate">Implemented:</div>
+                <div class="ml-1.5 text-base font-semibold">16</div>
+            </div> -->
+        </div>
+    </div>
+    <!-- Récapulatif prestation -->
+    <div class="sm:col-span-2 md:col-span-4 lg:col-span-2 flex flex-col flex-auto p-3  bg-card shadow rounded-2xl overflow-hidden">
+        <div class="flex flex-col sm:flex-row items-start justify-between">
+            <div class="text-base font-medium tracking-tight leading-6 truncate ">Récapulatif prestation</div>
+            <div class="mt-0 sm:mt-0 sm:ml-2">
+                <mat-button-toggle-group
+                    value="this-week"
+                    #githubIssuesWeekSelector="matButtonToggleGroup">
+                    <mat-button-toggle value="last-week">Dernière semaine</mat-button-toggle>
+                    <mat-button-toggle value="this-week">Cette semaine</mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+        </div>
+        <div class="grid grid-cols-1  grid-flow-row gap-6 w-full mt-0 sm:mt-4">
+            <!-- Bulletin de prestation -->
+            <div class="flex flex-col flex-auto">
+                <div class="font-medium text-secondary"></div>
+                <div class="flex flex-col flex-auto">
+                    <div class="flex flex-col flex-auto">
+                        <apx-chart
+                            class="flex-auto w-full h-80"
+                            [chart]="{
+                                fontFamily: 'inherit',
+                                foreColor : 'inherit',
+                                height    : '100%',
+                                type      : 'line',
+                                toolbar   : {
+                                    show: false
+                                },
+                                zoom      : {
+                                    enabled: false
+                                }
+                            }"
+                            [colors]="['#64748B', '#94A3B8']"
+                            [dataLabels]="{
+                                enabled        : true,
+                                enabledOnSeries: [0],
+                                background     : {
+                                    borderWidth: 0
+                                }
+                            }"
+                            [grid]="{
+                                borderColor: 'var(--border)'
+                            }"
+                            [labels]="['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim']"
+                            [legend]="{
+                                show: false
+                            }"
+                            [plotOptions]="{
+                                bar: {
+                                    
+                                }
+                            }"
+                            [series]="[
+                            {
+                                name: 'Envoyé',
+                                type: 'line',
+                                data: [42, 28, 43, 34, 20, 25, 22]
+                            },
+                            {
+                                name: 'Non envoyé',
+                                type: 'column',
+                                data: [11, 10, 8, 11, 8, 10, 17]
+                            }
+                        ]"
+                            [states]="{
+                                hover: {
+                                    filter: {
+                                        type : 'darken',
+                                        value: 0.75
+                                    }
+                                }
+                            }"
+                            [stroke]="{
+                                width: [3, 0]
+                            }"
+                            [tooltip]="{
+                                followCursor: true,
+                                theme       : 'dark'
+                            }"
+                            [xaxis]="{
+                                axisBorder: {
+                                    show: false
+                                },
+                                axisTicks : {
+                                    color: 'var(--border)'
+                                },
+                                labels    : {
+                                    style: {
+                                        colors: 'var(--text-secondary)'
+                                    }
+                                },
+                                tooltip   : {
+                                    enabled: false
+                                }
+                            }"
+                            [yaxis]="{
+                                labels: {
+                                    offsetX: -16,
+                                    style  : {
+                                        colors: 'var(--text-secondary)'
+                                    }
+                                }
+                            }"></apx-chart>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 border-t divide-x -m-6 mt-0 bg-gray-50 dark:bg-transparent">
+                    <div class="flex flex-col items-center justify-center p-1 sm:p-8">
+                        <div class="text-4xl font-semibold leading-none tracking-tighter">
+                            500
+                        </div>
+                        <div class="mt-1 text-center text-secondary mb-2">Envoyé</div>
+                    </div>
+                    <div class="flex flex-col items-center justify-center p-1 sm:p-8">
+                        <div class="text-4xl font-semibold leading-none tracking-tighter">
+                            300
+                        </div>
+                        <div class="mt-1 text-center text-secondary mb-2">Non envoyé</div>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+    <!-- distribution commande -->
+    <div class="sm:col-span-2 md:col-span-4 lg:col-span-2 flex flex-col flex-auto p-3 bg-card shadow rounded-2xl overflow-hidden">
+        <div class="flex flex-col sm:flex-row items-start justify-between">
+            <div class="text-base font-medium tracking-tight leading-6 truncate  ">Récapulatif commande</div>
+            <div class="mt-0 sm:mt-0 sm:ml-2">
+                <mat-button-toggle-group
+                    value="this-week"
+                    #taskDistributionWeekSelector="matButtonToggleGroup">
+                    <mat-button-toggle value="last-week">Dernière semaine</mat-button-toggle>
+                    <mat-button-toggle value="this-week">Cette semaine</mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+        </div>
+        <div class="flex flex-col flex-auto mt-0">
+            <apx-chart
+                class="flex-auto w-full h-80"
+                [chart]="{
+                    fontFamily: 'inherit',
+                    foreColor : 'inherit',
+                    height    : '100%',
+                    type      : 'donut',
+                    toolbar   : {
+                        show: false
+                    },
+                    zoom      : {
+                        enabled: false
+                    }
+                }"
+                [labels]="['Marchandise', 'Manutention', 'Navire']"
+                [legend]="{
+                    position: 'bottom'
+                }"
+                [plotOptions]="{
+                    polarArea: {
+                        spokes: {
+                            connectorColors: 'var(--border)'
+                        },
+                        rings : {
+                            strokeColor: 'var(--border)'
+                        }
+                    }
+                }"
+                [series]="[15, 20, 38]"
+                    
+
+
+                    
+                
+                [states]="{
+                    hover: {
+                        filter: {
+                            type : 'darken',
+                            value: 0.75
+                        }
+                    }
+                }"
+                [stroke]="{
+                    width: 2
+                }"
+                [theme]="{
+                    monochrome: {
+                        enabled       : true,
+                        color         : '#93C5FD',
+                        shadeIntensity: 0.75,
+                        shadeTo       : 'dark'
+                    }
+                }"
+                [tooltip]="{
+                    followCursor: true,
+                    theme       : 'dark'
+                }"
+                [yaxis]="{
+                    labels: {
+                        style: {
+                            colors: 'var(--text-secondary)'
+                        }
+                    }
+                }"></apx-chart>
+        </div>
+        <div class="grid grid-cols-2 border-t divide-x -m-6 -mt-0 bg-gray-50 dark:bg-transparent">
+            <div class="flex flex-col items-center justify-center p-1 sm:p-8">
+                <div class="text-4xl font-semibold leading-none tracking-tighter">
+                    500
+                </div>
+                <div class="mt-1 text-center text-secondary mb-2">Validé</div>
+            </div>
+            <div class="flex flex-col items-center justify-center p-1 sm:p-8">
+                <div class="text-4xl font-semibold leading-none tracking-tighter">
+                    300
+                </div>
+                <div class="mt-1 text-center text-secondary mb-2">Non validé</div>
+            </div>
+        </div>
+    </div>
+
+</div>

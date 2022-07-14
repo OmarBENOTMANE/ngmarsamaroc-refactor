@@ -1,0 +1,50 @@
+@import "color" ;
+
+
+.btn-menu{
+  width: 85%;
+ // box-shadow: 2px 3px 2px 3px #F2ECFF;
+  padding:8px;
+  font-weight: 450;
+ // background-color: #AFC3FF;
+  border-radius: 6px;
+
+}
+
+
+.btn-menu:hover{
+  color:$secondary2;
+  font-weight: 500;
+  background-color: #CCF3EE;
+
+ // border: $secondary2 2px solid;
+}
+
+.btn-menu-active{
+  color:$secondary2;
+  font-weight: 500;
+  background-color: #CCF3EE;
+}
+
+.btn-s-menu {
+  padding-left: 1vw;
+  width: 100%;
+  font-weight: 400;
+  height: 6vh;
+  color:$black_50;
+ }
+
+.btn-s-menu:hover{
+  color: $black_20;
+  font-weight: 500;
+}
+
+
+
+.btn-menu-1{
+  font-size: 1rem;
+  width: 80%;
+  height: 5vh;
+  font-weight:480;
+}
+
